@@ -1,11 +1,11 @@
 //String_indexOf_1
 //Subroutine String__indexOf_1 returns the index of the first occurrence of character ch in a given String.
 // X0: Points to first byte of a CString
+// X6: contains char to look for
 // LR: Contains the return address
-
 // Return register contents:
 // All AAPCS registers are preserved.	
-//	X0, X1, X3, X4, and X3 are modified and not preserved
+//	X0, X1, X3, X4, and X5 are modified and not preserved
 
 	.data
 		
@@ -23,9 +23,9 @@ String_indexOf_1:
 	bl	strlength		// get string length
 	ldr	lr, [sp], #16	// load link back again
 	mov	X3, #0			// initialize accumulator to 0
-	mov	X0, X5			// restore X0 from X6
+	mov	X0, X5			// restore X0 from X5
 	mov	X4, X2			// preserve string length into X4
-	ldr	X1, =ptrChar	// get pointer address
+	ldr	X1, =ptrChar	// get ptrChar address
 	ldr	X1, [X1]		// get address from ptrChar
 	ldrb W1, [X1]		// get value from the address
 	
@@ -34,7 +34,7 @@ loop:
 	cmp	X2, X1			// compare the value at the two 
 	beq	indexOf_equal	// branch to the index return
 	cmp	X4, X3			// compare string length to accumulator
-	beq	index_end		// if equal move over to function
+	beq	index_end		// if equal move over to end
 	add	X3, X3, #1		// increment loop
 	b loop			    // go back to the top
 	
