@@ -39,11 +39,11 @@ loop:
 	b loop			    // go back to the top
 	
 indexOf_equal:
-	mov	X1, X3 			// move accumulator into X1 to return the index position
+	mov	X0, X3 			// move accumulator into X0 to return the index position
 	ret	LR				// return to the link register
 	
 index_end:
-	mov	X1, #-1			// move negative 1 into register if false
+	mov	X0, #-1			// move negative 1 into X0 if false
 	ret	LR				// return to Link Register
 	
 	.end

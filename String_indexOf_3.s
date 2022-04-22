@@ -1,5 +1,5 @@
-//String_indexOf_2
-//Subroutine String__indexOf_2 returns the index of the first occurrence of character ch in a given String.
+//String_indexOf_3
+//Subroutine String__indexOf_3 returns the index of the first occurrence of substring in a given String.
 // X0: Points to first byte of a CString
 // X1: contains the  substring you are looking for
 // LR: Contains the return address
@@ -95,7 +95,7 @@ index_end:
 	ret	LR				// return link register
 
 loop3:
-	mov	X1, X6		    // subtract the initial loop index by the 
+	mov	X0, X6		    // subtract the initial loop index by the X0
 	ret	LR
 	
 end_loop:

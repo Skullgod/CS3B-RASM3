@@ -51,11 +51,11 @@ indexOf_equal:
 index_end:
 	cmp	X5, #0			// compare to 0 if it is continue exiting loop
 	bne	end			// if it is not equal move to 
-	mov	X1, #-1			// move negative 1 into register
+	mov	X0, #-1			// move negative 1 into register
 	ret	LR				// return link register
 
 end:
-	mov	X1, X5			// load last recorded index of occurance of letter
+	mov	X0, X5			// load last recorded index of occurance of letter
 	ret	LR				// return link register
 	
 	.end

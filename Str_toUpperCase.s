@@ -14,7 +14,7 @@
 	.text	
 
 Str_toUpperCase:
-	mov		X5, X0			// preserve X1
+	mov		X5, X0			// preserve X0
 	str		lr, [sp, #-16]!	// push link register to the stack
 	bl		strlength		// run string length for X0
 	ldr		lr, [sp], #16	// load link back again	
@@ -46,7 +46,7 @@ conversion:
 	b 		compare		// go to rest of function
 
 exit:
-	mov		X1, X5			// return address to uppercase string to X1
+	mov		X0, X5			// return address to uppercase string to X0
 	RET		LR				// return to Link Register
 	
 	.end

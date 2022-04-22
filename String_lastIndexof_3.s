@@ -97,7 +97,7 @@ index_end:
 	ret	LR				// return link register
 
 ending:
-	mov	X1, X5			// load last recorded index of occurance of letter
+	mov	X0, X5			// load last recorded index of occurance of letter
 	ret	LR				// return link register
 	
 loop3:

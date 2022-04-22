@@ -14,12 +14,12 @@
 	.text	
 
 Str_toLowerCase:
-	mov	X5, X0			// preserve X1
+	mov	X5, X0			// preserve X0
 	str	lr, [sp, #-16]!	// push link register to the stack
 	bl	strlength		// run string length for X0
 	ldr	lr, [sp], #16	// load link back again	
 	mov	X6, X2			// push string length into X6
-	mov	X0, X5
+	mov	X0, X5			// restore X0
 
 loop:
 	ldrb W2, [X0] 		// load a byte from the address at X0 and move the address by 1
@@ -45,7 +45,7 @@ conversion:
 	b compare			//  go to compare
 
 exit:
-	mov X1, X5			// return address to lowercase string to X1
+	mov X0, X5			// return address to lowercase string to X0
 	RET	LR				// return to Link Register
 	
 	.end
