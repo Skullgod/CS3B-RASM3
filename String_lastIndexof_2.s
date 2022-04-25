@@ -7,9 +7,7 @@
 // Return register contents:
 // All AAPCS registers are preserved.	
 //	X0, X1, X3, X4, X5, and X6 are modified and not preserved
-
-
-	.data	
+		.data	
 ptrChar:	.quad		0
 
 	.global String_lastIndexOf_2
@@ -27,11 +25,13 @@ String_lastIndexOf_2:
 	mov	X0, X5			// restore X0 from X5
 	mov	X4, X2			// move string length into X4
 	ldr	X2, [sp], #16	// load X2 back again
-	mov	X6, X2			// initialize accumulator to amount entered	
+	mov	X6, #0			// initialize accumulator to 0	
 	ldr	X1, =ptrChar	// get ptrChar address
-	ldr	X1, [X1]		// get address from ptrChar
+	ldr	X1, [X1]		// get address from ptrCha
 	ldrb W1, [X1]		// get value from the address
+	mov X5, #0			//reset value of X5 to 0
 	add	X0, X0, X2		// add this to address to get bytes after index specified
+	MOV X8, X2
 	
 loop:
 	ldrb W2, [X0], #1	// load a byte from the address at X0 and move the address by 1
@@ -39,7 +39,7 @@ loop:
 	beq	indexOf_equal	// branch to the index return
 	
 cont:
-	cmp	X4, X6			// compare string length to accumulator
+	cmp	X8, X6			// compare string length to accumulator
 	beq	index_end		// if equal move over to end
 	add	X6, X6, #1		// increment
 	b loop			// go back to the top
@@ -59,5 +59,4 @@ end:
 	ret	LR				// return link register
 	
 	.end
-	
 	
