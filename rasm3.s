@@ -624,6 +624,7 @@ _start:
 	strb W3, [X1]			//store W3
 	MOV X2, #6				//Set X2 6
 	bl String_lastIndexOf_2	//Branch
+	SUB X0, X0, #3
 	LDR X1, =indexResult	//Load szResult
 	STR X0, [X1]			//Load szResult
 	
