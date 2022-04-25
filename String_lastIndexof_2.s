@@ -35,15 +35,14 @@ String_lastIndexOf_2:
 	MOV 	X6, X4
 	
 loop:
-	ldrb 	W2, [X0, X6]	// load a byte from the address at X0 and move the address by 1
+	ldrb 	W2, [X0, X4]	// load a byte from the address at X0 and move the address by 1
 	cmp	X2, X1			// compare the value at the two 
 	beq	indexOf_equal	// branch to the index return
 	
 cont:
-	SUB 	X8, X4, X6
-	cmp	X4, X8			// compare string length to accumulator
+	cmp	X4, X6			// compare string length to accumulator
 	beq	index_end		// if equal move over to end
-	add	X6, X6, #1		// increment
+	SUB	X4, X4, #1		// increment
 	b loop			// go back to the top
 	
 indexOf_equal:
